@@ -1,0 +1,22 @@
+/chat-app
+  /assets
+    /images
+    /icons
+  /components
+    /chat
+    /profile
+    /settings
+    /message
+  /css
+    /themes
+      light.css
+      dark.css
+    style.css
+  /js
+    auth.js
+    chat.js
+    profile.js
+    settings.js
+    theme.js
+    utils.js
+  index.html
