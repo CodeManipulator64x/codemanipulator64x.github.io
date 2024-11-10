@@ -3,14 +3,14 @@ import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebas
 
 // Firebase ayarları
 const firebaseConfig = {
-  apiKey: "AIzaSyAmy3KeDXQVJyUUaRpPvH0nmC_gNmYDnFE",
-  authDomain: "zenithchat-7c1de.firebaseapp.com",
-  databaseURL: "https://zenithchat-7c1de-default-rtdb.firebaseio.com",
-  projectId: "zenithchat-7c1de",
-  storageBucket: "zenithchat-7c1de.appspot.com",
-  messagingSenderId: "93515029985",
-  appId: "1:93515029985:web:a842c2ec511225339a46a0",
-  measurementId: "G-71MRMJR7SY"
+  apiKey: AIzaSyAGicUjvPTwaIUGElQa9vU4dNQUQrbpPPM
+  authDomain: openchat-e1b07.firebaseapp.com
+  databaseURL: https://openchat-e1b07-default-rtdb.europe-west1.firebasedatabase.app/
+  projectId: 661808673294
+  storageBucket: 
+  messagingSenderId: 661808673294
+  appId: 
+  measurementId: 
 };
 
 // Firebase başlatılıyor
