@@ -1,1 +1,11 @@
+/* Aydınlık tema */
+.light-theme {
+    background-color: #f9f9f9;
+    color: #000;
+}
 
+/* Karanlık tema */
+.dark-theme {
+    background-color: #181818;
+    color: #fff;
+}
