@@ -1,1 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Uygulaması</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div id="settings-btn">
+            <img src="settings-icon.png" alt="Settings">
+            <span>Settings</span>
+        </div>
+    </header>
 
+    <div id="settings-modal" class="modal">
+        <!-- Profil Düzenleme ve Tema Ayarları Burada Olacak -->
+        <h2>Profile Settings</h2>
+        <input type="file" id="profile-photo">
+        <label for="username">Username:</label>
+        <input type="text" id="username">
+        <label for="bio">About You:</label>
+        <textarea id="bio"></textarea>
+        <div id="theme-selection">
+            <button onclick="setLightTheme()">Light Theme</button>
+            <button onclick="setDarkTheme()">Dark Theme</button>
+        </div>
+    </div>
+
+    <div id="chat-container">
+        <!-- Sohbet ekranı burada olacak -->
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
