@@ -73,3 +73,79 @@ groupsRef.add({
   createdBy: user.uid,
   createdAt: Date.now()
 });
+// Firebase SDK'yı dahil et
+import { initializeApp } from "firebase/app";
+import { getDatabase, ref, set, push, onValue } from "firebase/database";
+
+// Firebase yapılandırmanızı buraya ekleyin
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",  // Firebase API key'iniz
+  authDomain: "YOUR_AUTH_DOMAIN",  // Firebase Authentication domain
+  databaseURL: "https://your-database-name.firebaseio.com",  // Firebase Realtime Database URL
+  projectId: "YOUR_PROJECT_ID",  // Firebase Project ID
+  storageBucket: "YOUR_STORAGE_BUCKET",  // Firebase Storage Bucket
+  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",  // Firebase Messaging Sender ID
+  appId: "YOUR_APP_ID"  // Firebase App ID
+};
+
+// Firebase'i başlat
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
+
+// HTML elementlerine erişim
+const messagesContainer = document.getElementById('messages-container');
+const messageInput = document.getElementById('message-input');
+const sendButton = document.getElementById('send-button');
+
+// Firebase Realtime Database'den gelen verileri ekrana yazdırma
+const messagesRef = ref(database, 'messages');
+
+// Yeni bir mesaj eklemek için fonksiyon
+function sendMessage(messageText) {
+    const newMessageRef = push(messagesRef);
+    set(newMessageRef, {
+        text: messageText,
+        timestamp: Date.now(),
+    }).then(() => {
+        console.log('Mesaj başarıyla gönderildi!');
+        messageInput.value = ''; // Input'u temizliyoruz
+    }).catch((error) => {
+        console.error('Mesaj gönderilirken hata oluştu: ', error);
+    });
+}
+
+// Veritabanındaki mesajları dinlemek ve ekrana yazdırmak
+onValue(messagesRef, (snapshot) => {
+    messagesContainer.innerHTML = '';  // Mevcut mesajları temizle
+    const data = snapshot.val();  // Veritabanındaki tüm mesajları al
+
+    for (let key in data) {
+        const message = data[key];
+        const messageElement = document.createElement('div');
+        messageElement.classList.add('message');
+        messageElement.textContent = message.text;
+        messagesContainer.appendChild(messageElement);
+    }
+
+    // Mesajlar en alta kaydırılsın
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+});
+
+// "Gönder" butonuna tıklanırsa mesaj gönder
+sendButton.addEventListener('click', () => {
+    const messageText = messageInput.value;
+    if (messageText.trim()) {
+        sendMessage(messageText);
+    }
+});
+
+// Enter tuşuna basarak mesaj göndermeyi sağlama
+messageInput.addEventListener('keypress', (event) => {
+    if (event.key === 'Enter') {
+        event.preventDefault();
+        const messageText = messageInput.value;
+        if (messageText.trim()) {
+            sendMessage(messageText);
+        }
+    }
+});
