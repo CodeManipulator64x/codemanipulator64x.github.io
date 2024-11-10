@@ -81,7 +81,7 @@ import { getDatabase, ref, set, push, onValue } from "firebase/database";
 const firebaseConfig = {
   apiKey: "YOUR_API_KEY",  // Firebase API key'iniz
   authDomain: "YOUR_AUTH_DOMAIN",  // Firebase Authentication domain
-  databaseURL: "https://your-database-name.firebaseio.com",  // Firebase Realtime Database URL
+  databaseURL: https://openchat-e1b07-default-rtdb.europe-west1.firebasedatabase.app/
   projectId: "YOUR_PROJECT_ID",  // Firebase Project ID
   storageBucket: "YOUR_STORAGE_BUCKET",  // Firebase Storage Bucket
   messagingSenderId: "YOUR_MESSAGING_SENDER_ID",  // Firebase Messaging Sender ID
