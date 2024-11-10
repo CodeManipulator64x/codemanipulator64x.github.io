@@ -17,3 +17,16 @@ document.getElementById('profile-photo').addEventListener('change', function(eve
 document.getElementById('username').addEventListener('input', function(event) {
     // Kullanıcı ismini güncelle
 });
+const messagesRef = firebase.database().ref('messages');
+messagesRef.on('child_added', function(data) {
+    const message = data.val();
+    displayMessage(message);
+});
+
+function sendMessage(messageText) {
+    const newMessage = {
+        text: messageText,
+        timestamp: Date.now(),
+    };
+    messagesRef.push(newMessage);
+}
