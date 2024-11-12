@@ -3,28 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OPENCHAT</title>
-    <link rel="stylesheet" href="index.css">
+    <title>Chat Uygulaması</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Karşılama Ekranı -->
-    <div id="welcome-screen">
-        <h1>OPENCHAT'e Hoşgeldiniz</h1>
-        <input type="text" id="username" placeholder="Kullanıcı Adı Giriniz" />
-        <button id="join-btn" disabled>Katıl</button>
-    </div>
 
-    <!-- Mesajlaşma Ekranı -->
-    <div id="chat-screen" style="display:none;">
-        <h1>ZenithChat</h1>
-        <div id="message-area"></div>
-        <div id="input-area">
-            <input type="text" id="message-input" placeholder="Mesajınızı Yazın" />
-            <button id="send-btn">Gönder</button>
+<!-- Ana Chat Ekranı -->
+<div id="chat-container">
+    <div id="header">
+        <h1>Chat Uygulaması</h1>
+        <!-- Ayarlar butonu -->
+        <div id="settings-button" onclick="toggleSettings()">
+            <img src="settings-icon.svg" alt="Ayarlar">
         </div>
-        <button id="logout-btn">Hesaptan Çıkış Yap</button>
     </div>
 
-    <script type="module" src="index.js"></script>
+    <!-- Sohbet Ekranı -->
+    <div id="chat-screen">
+        <div class="message">Hoş geldiniz!</div>
+    </div>
+
+    <!-- '+' Simgesi ile Grup Oluşturma -->
+    <div id="create-group">
+        <button onclick="openCreateGroup()">+</button>
+    </div>
+</div>
+
+<!-- Ayarlar Menü -->
+<div id="settings-menu" class="hidden">
+    <div class="settings-item">
+        <h2>Temalar</h2>
+        <select id="theme-select" onchange="changeTheme()">
+            <option value="light">Aydınlık</option>
+            <option value="dark">Karanlık</option>
+        </select>
+    </div>
+    <div class="settings-item">
+        <h2>Profil Ayarları</h2>
+        <button onclick="openProfileSettings()">Profil Düzenle</button>
+    </div>
+    <div class="settings-item">
+        <h2>Grup Ayarları</h2>
+        <button onclick="openGroupSettings()">Grup Oluştur</button>
+    </div>
+</div>
+
+<!-- Grup Oluşturma Formu -->
+<div id="create-group-form" class="hidden">
+    <h2>Grup Adı:</h2>
+    <input type="text" id="group-name" placeholder="Grup Adı">
+    <h3>Grup Tipi:</h3>
+    <select id="group-type">
+        <option value="club">Kulüp</option>
+        <option value="friends">Arkadaşlar Arası</option>
+        <option value="server">Sunucu</option>
+    </select>
+    <button onclick="createGroup()">Grup Oluştur</button>
+</div>
+
+<script src="app.js"></script>
 </body>
 </html>
