@@ -1,1 +1,10 @@
+/* Örnek CSS */
+#ayarlarBolumu {
+  /* Ayarlar bölümünün stili */
+  transition: all 0.3s ease-in-out;
+}
 
+#anaIcerik {
+  /* Ana içeriğin stili */
+  transition: all 0.3s ease-in-out;
+}
